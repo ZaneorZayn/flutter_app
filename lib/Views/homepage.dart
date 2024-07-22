@@ -131,7 +131,7 @@ class HomePage extends StatelessWidget {
     Expanded(
     child: _buildGridButton(
     color: Colors.deepPurple[900]!,
-    text: 'Join the movement',
+    text: 'Join the movement ',
     textColor: Colors.pink[100]!,
     height: double.infinity, // Adjusted height
     isRow: true,
