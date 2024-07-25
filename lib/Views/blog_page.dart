@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../Widgets/custom_appbar.dart';
 
 class BlogPage extends StatefulWidget {
   const BlogPage({super.key});
@@ -27,47 +26,90 @@ class _BlogPageState extends State<BlogPage> with SingleTickerProviderStateMixin
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
+        leading: Container
+          (decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.white,
+        ),
+            margin: EdgeInsets.all(7),
+            child: IconButton(icon: Icon(Icons.arrow_back), onPressed: () {})
+        ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('All Content', style: TextStyle(fontSize: 20)),
-            Text('Explore good blog and Q&A', style: TextStyle(fontSize: 14)),
+            SizedBox(height: 5,),
+            Text('Explore good blog and Q&A', style: TextStyle(fontSize: 14, color: Colors.white),),
           ],
         ),
         backgroundColor: Colors.pinkAccent,
-        bottom: TabBar(
-          controller: _tabController,
-          isScrollable: true,
-          indicatorColor: Colors.white,
-          tabs: [
-            Tab(text: 'All'),
-            Tab(text: 'Q&A'),
-            Tab(text: 'Blog'),
-            Tab(text: 'Videos'),
-            Tab(text: 'My Post'),
-          ],
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(kToolbarHeight),
+          child: Container(
+            color: Colors.white,
+            child: TabBar(
+              controller: _tabController,
+              isScrollable: true,
+              indicator: UnderlineTabIndicator(
+                borderSide: BorderSide(color: Colors.pinkAccent,width: 3),
+                insets: EdgeInsets.symmetric(horizontal: 16),
+              ),
+              labelColor: Colors.black,
+              unselectedLabelColor: Colors.black,
+              tabs: [
+                Tab(text: 'All'),
+                Tab(text: 'Q&A'),
+                Tab(text: 'Blog'),
+                Tab(text: 'Videos'),
+                Tab(text: 'My Post'),
+              ],
+            ),
+          ),
         ),
         actions: [
-          IconButton(icon: Icon(Icons.search), onPressed: () {}),
-          IconButton(icon: Icon(Icons.bookmark_border), onPressed: () {}),
+          Container
+            (decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(40),
+            color: Colors.white,
+          ),
+              margin: EdgeInsets.all(5),
+              child: IconButton(icon: Icon(Icons.search), onPressed: () {})
+          ),
+
+          SizedBox(width: 5,),
+
+          Container
+            (decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(40),
+            color: Colors.white,
+          ),
+              margin: EdgeInsets.all(5),
+              child: IconButton(icon: Icon(Icons.bookmark_border), onPressed: () {})
+          ),
         ],
       ),
+      backgroundColor: Colors.grey[100],
       body: Column(
         children: [
           Container(
             margin: EdgeInsets.all(8.0),
             child: Row(
               children: [
-                IconButton(icon: Icon(Icons.filter_list), onPressed: () {}),
                 Expanded(
+                  flex:1,
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.sort),
+                        ),
                         _buildCategoryChip('Sexual Health'),
                         _buildCategoryChip('Menstrual Health'),
                         _buildCategoryChip('Contraception'),
-                        _buildCategoryChip('Mental Health'),
+                        _buildCategoryChip('Pregnancy'),
                       ],
                     ),
                   ),
@@ -89,20 +131,6 @@ class _BlogPageState extends State<BlogPage> with SingleTickerProviderStateMixin
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.article), label: 'Blog'),
-          BottomNavigationBarItem(icon: Icon(Icons.local_hospital), label: 'Doctors'),
-          BottomNavigationBarItem(icon: Icon(Icons.account_box), label: 'Profile'),
-        ],
-        selectedItemColor: Colors.pinkAccent,
-        unselectedItemColor: Colors.grey,
-        currentIndex: 1, // Set the selected tab index here
-        onTap: (index) {
-          // Handle tab change
-        },
-      ),
     );
   }
 }
@@ -120,11 +148,13 @@ Widget _buildCategoryChip(String label) {
     ),
   );
 }
+
 Widget _buildTabContent() {
   return ListView.builder(
     itemCount: 5,
     itemBuilder: (context, index) {
       return Card(
+        color: Colors.white,
         margin: EdgeInsets.all(8.0),
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -166,7 +196,7 @@ Widget _buildTabContent() {
               ),
               SizedBox(height: 8.0),
               Divider(),
-              Text('See more detail', style: TextStyle(color: Colors.blue)),
+              Center(child: Text('See more detail', style: TextStyle(color: Colors.blue))),
             ],
           ),
         ),
@@ -174,4 +204,3 @@ Widget _buildTabContent() {
     },
   );
 }
-

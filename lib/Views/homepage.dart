@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(65),
+        preferredSize: Size.fromHeight(70),
         child: CustomAppBar(
           title:"Home",
           actions: [
@@ -67,51 +67,51 @@ class HomePage extends StatelessWidget {
                         ),
     child: Text(
     'Your period is likely to start on or around July 29',
-    style: TextStyle(
-    color: Colors.white,
-    fontSize: 15,
-    ),
-    textAlign: TextAlign.center,
-    ),
+          style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                              ),
+          textAlign: TextAlign.center,
+                ),
     ),
     SizedBox(height: 10), // Spacer for separation
     Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 10),
-    child: Container(
-    height: MediaQuery.of(context).size.width / 4, // Adjusted height
-    child: Row(
-    children: [
-    Expanded(
-    flex: 4, // This container will take 40% of the width
-    child: Container(
-    height: double.infinity,
-    child: _buildGridButton(
-    color: Colors.blue[900]!,
-    text: 'Doctor Appointment',
-    textColor: Colors.lightBlue[100]!,
-    icon: Icons.medical_services,
-    image: 'assets/images/Doctor.png', // Assuming you have this image in your assets
-    isRow: true,
-    ),
-    ),
-    ),
-    Expanded(
-    flex: 6, // This column will take 60% of the width
-    child: Column(
-    children: [
-    Expanded(
-    child: Row(
-    children: [
-    Expanded(
-    child: _buildGridButton(
-    color: Colors.pink[100]!,
-    text: 'Check Up',
-    textColor: Colors.black,
-    icon: Icons.check,
-    height: double.infinity, // Adjusted height
-    isRow: true,
-    ),
-    ),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Container(
+        height: MediaQuery.of(context).size.width / 4, // Adjusted height
+        child: Row(
+              children: [
+              Expanded(
+              flex: 4, // This container will take 40% of the width
+              child: Container(
+                  height: double.infinity,
+                  child: _buildGridButton(
+                  color: Colors.blue[900]!,
+                  text: 'Doctor Appointment',
+                  textColor: Colors.lightBlue[100]!,
+                  icon: Icons.medical_services,
+                  image: 'assets/images/Doctor.png', // Assuming you have this image in your assets
+                  isRow: true,
+                      ),
+                        ),
+                                    ),
+              Expanded(
+                  flex: 6, // This column will take 60% of the width
+                  child: Column(
+                  children: [
+                  Expanded(
+                  child: Row(
+                  children: [
+                        Expanded(
+                        child: _buildGridButton(
+                        color: Colors.pink[100]!,
+                        text: 'Check Up',
+                        textColor: Colors.black,
+                        icon: Icons.check,
+                        height: double.infinity, // Adjusted height
+                        isRow: true,
+                                ),
+                                ),
     Expanded(
     child: _buildGridButton(
     color: Colors.lightBlue[100]!,
