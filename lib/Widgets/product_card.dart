@@ -1,27 +1,36 @@
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
-  final String image;
+  final String imageUrl;
   final String title;
-  final String price;
-  final String rating;
+  final double price;
+  final double rating;
+  final int reviewCount;
 
-  ProductCard({
-    super.key,
-    required this.image,
+  const ProductCard({
+    required this.imageUrl,
     required this.title,
     required this.price,
     required this.rating,
+    required this.reviewCount,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      width: 220,
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
+        color: Colors.white,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.grey[200]!, width: 0.5), // Light border
-        boxShadow: [BoxShadow(color: Colors.grey[300]!, blurRadius: 3)], // Subtle shadow
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: Offset(0, 3),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,104 +38,100 @@ class ProductCard extends StatelessWidget {
           Stack(
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
                 child: Image.asset(
-                  image,
-                  height: 130,
+                  imageUrl,
+                  height: 150,
+                  width: double.infinity,
                   fit: BoxFit.cover,
-                  //color: Colors.grey[200], // Placeholder for image
                 ),
               ),
               Positioned(
-                top: 0,
-                left: 0,
+                top: 10,
+                left: 10,
                 child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: Colors.redAccent
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  padding: EdgeInsets.all(5),
-
                   child: Text(
                     'New',
                     style: TextStyle(
+                      color: Colors.white,
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
                     ),
                   ),
                 ),
               ),
             ],
           ),
-          SizedBox(height: 10),
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              title,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+              ),
             ),
           ),
-          SizedBox(height: 5),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                price,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.green[700],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Row(
+              children: [
+                Icon(Icons.star, color: Colors.yellow, size: 16),
+                SizedBox(width: 4),
+                Text(
+                  '$rating ($reviewCount)',
+                  style: TextStyle(fontSize: 12),
                 ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4),
+            child: Text(
+              '\$$price',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                color: Colors.black,
               ),
-              Row(
+            ),
+          ),
+          Spacer(),
+          InkWell(
+            onTap: () {
+              // Add to cart functionality
+            },
+            child: Container(
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(vertical: 10),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.vertical(bottom: Radius.circular(10)),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.star, color: Colors.amber, size: 16),
-                  SizedBox(width: 5),
                   Text(
-                    rating,
-                    style: TextStyle(fontSize: 14),
+                    'Add to Cart',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(width: 4),
+                  Icon(
+                    Icons.favorite_border,
+                    color: Colors.white,
+                    size: 16,
                   ),
                 ],
               ),
-            ],
-          ),
-          SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  //primary: Colors.green[700], // Green button color
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5), // Adjust padding
-                ),
-                child: Text(
-                  'Add to Cart',
-                  style: TextStyle(color: Colors.blue, fontSize: 12),
-                ),
-              ),
-
-              SizedBox(width: 20,),
-
-              ElevatedButton(
-
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5), // Adjust padding
-                ),
-                child: Text(
-                  'Buy Now',
-                  style: TextStyle(color: Colors.green, fontSize: 12),
-                ),
-              ),
-            ],
+            ),
           ),
         ],
       ),

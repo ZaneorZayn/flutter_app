@@ -89,8 +89,7 @@ class HomePage extends StatelessWidget {
                   color: Colors.blue[900]!,
                   text: 'Doctor Appointment',
                   textColor: Colors.lightBlue[100]!,
-                  icon: Icons.medical_services,
-                  image: 'assets/images/Doctor.png', // Assuming you have this image in your assets
+                  image:"assets/images/Doctor.png",
                   isRow: true,
                       ),
                         ),
@@ -232,7 +231,7 @@ class HomePage extends StatelessWidget {
             ),
 
             Padding(
-              padding: const EdgeInsets.all(9.0),
+              padding: const EdgeInsets.only(top: 16.0,left: 16,right: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -276,7 +275,7 @@ class HomePage extends StatelessWidget {
                                 topRight: Radius.circular(16),
                               ),
                               child: Image.asset(
-                                "assets/images/Pregnancy.png",
+                                "assets/images/Blog.png",
                                 height: 154, // Adjust image height
                                 width: double.infinity,
                                 fit: BoxFit.cover,
@@ -295,14 +294,18 @@ class HomePage extends StatelessWidget {
                               ),
 
 
-                              child: Text(
-                                "jfdfkjdkfjdkfjdksfjkdsfj",
-                                style: TextStyle(
-                                  fontSize: 10, // Adjust font size
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 8),
+                                child: Text(
+                                  "ONCE INSERTED, DOES THE IMPLANT MOVE AROUND MY BODY?",
+                                  style: TextStyle(
+                                    fontSize: 10, // Adjust font size
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                    overflow: TextOverflow.ellipsis
+                                  ),
+                                  textAlign: TextAlign.center,
                                 ),
-                                textAlign: TextAlign.center,
                               ),
                             ),
 
@@ -327,7 +330,7 @@ class HomePage extends StatelessWidget {
             ),
 
             Container(
-              height: 285, // Adjust height as needed
+              height: 300, // Adjust height as needed
               margin: EdgeInsets.all(10.0),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -335,35 +338,39 @@ class HomePage extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   children: [
                     ProductCard(
-                      image: "assets/images/movie1.jpg",
+                      imageUrl: "assets/images/dotted.png",
                       title: 'Another Product',
-                      price: '\$49.99',
-                      rating: "3.8",
+                      price: 1.13,
+                      rating: 4.9,
+                      reviewCount: 1010,
 
                     ),
 
                     SizedBox(width: 10,),
 
                     ProductCard(
-                      image: "assets/images/movie1.jpg",
+                      imageUrl: "assets/images/Blog.png",
                       title: 'Another Product',
-                      price: '\$49.99',
-                      rating: "3.8",
+                      price: 1.13,
+                      rating: 4.9,
+                      reviewCount: 1010,
 
                     ),
                     ProductCard(
-
-                      image: "assets/images/movie1.jpg",
+                      imageUrl: "assets/images/Blog.png",
                       title: 'Another Product',
-                      price: '\$49.99',
-                      rating: "3.8",
+                      price: 1.13,
+                      rating: 4.9,
+                      reviewCount: 1010,
 
                     ),
+
                     ProductCard(
-                      image: "assets/images/movie1.jpg",
+                      imageUrl: "assets/images/Blog.png",
                       title: 'Another Product',
-                      price: '\$49.99',
-                      rating: "3.8",
+                      price: 1.13,
+                      rating: 4.9,
+                      reviewCount: 1010,
 
                     ),
                   ]

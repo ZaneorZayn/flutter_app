@@ -18,7 +18,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
         backgroundColor: backgroundColor, // Use the background color parameter
-        title: Text(title),
+        title: Text(title, style: TextStyle(color: Colors.white),),
         actions: actions,
         elevation: 1.0, // Customize as needed
         shape: const RoundedRectangleBorder(
