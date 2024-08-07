@@ -9,6 +9,7 @@ class BlogPage extends StatefulWidget {
 
 class _BlogPageState extends State<BlogPage> with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  int _selectedChipIndex = 0;
 
   @override
   void initState() {
@@ -27,20 +28,20 @@ class _BlogPageState extends State<BlogPage> with SingleTickerProviderStateMixin
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        leading: Container
-          (decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: Colors.white,
-        ),
-            margin: EdgeInsets.all(7),
-            child: IconButton(icon: Icon(Icons.arrow_back), onPressed: () {})
+        leading: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: Colors.white,
+          ),
+          margin: EdgeInsets.all(7),
+          child: IconButton(icon: Icon(Icons.arrow_back), onPressed: () {}),
         ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('All Content', style: TextStyle(fontSize: 20)),
-            SizedBox(height: 5,),
-            Text('Explore good blog and Q&A', style: TextStyle(fontSize: 14, color: Colors.white),),
+            SizedBox(height: 5),
+            Text('Explore good blog and Q&A', style: TextStyle(fontSize: 14, color: Colors.white)),
           ],
         ),
         backgroundColor: Colors.pinkAccent,
@@ -50,11 +51,11 @@ class _BlogPageState extends State<BlogPage> with SingleTickerProviderStateMixin
             color: Colors.white,
             child: TabBar(
               controller: _tabController,
-              isScrollable: true,
+              isScrollable: false,
               indicator: UnderlineTabIndicator(
-                borderSide: BorderSide(color: Colors.pinkAccent,width: 3),
-                insets: EdgeInsets.symmetric(horizontal: 16),
+                borderSide: BorderSide(color: Colors.pinkAccent, width: 2),
               ),
+              indicatorSize: TabBarIndicatorSize.tab,
               labelColor: Colors.black,
               unselectedLabelColor: Colors.black,
               tabs: [
@@ -68,24 +69,22 @@ class _BlogPageState extends State<BlogPage> with SingleTickerProviderStateMixin
           ),
         ),
         actions: [
-          Container
-            (decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(40),
-            color: Colors.white,
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(40),
+              color: Colors.white,
+            ),
+            margin: EdgeInsets.all(5),
+            child: IconButton(icon: Icon(Icons.search), onPressed: () {}),
           ),
-              margin: EdgeInsets.all(5),
-              child: IconButton(icon: Icon(Icons.search), onPressed: () {})
-          ),
-
-          SizedBox(width: 5,),
-
-          Container
-            (decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(40),
-            color: Colors.white,
-          ),
-              margin: EdgeInsets.all(5),
-              child: IconButton(icon: Icon(Icons.bookmark_border), onPressed: () {})
+          SizedBox(width: 5),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(40),
+              color: Colors.white,
+            ),
+            margin: EdgeInsets.all(5),
+            child: IconButton(icon: Icon(Icons.bookmark_border), onPressed: () {}),
           ),
         ],
       ),
@@ -97,7 +96,7 @@ class _BlogPageState extends State<BlogPage> with SingleTickerProviderStateMixin
             child: Row(
               children: [
                 Expanded(
-                  flex:1,
+                  flex: 1,
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -106,10 +105,10 @@ class _BlogPageState extends State<BlogPage> with SingleTickerProviderStateMixin
                           onPressed: () {},
                           icon: Icon(Icons.sort),
                         ),
-                        _buildCategoryChip('Sexual Health'),
-                        _buildCategoryChip('Menstrual Health'),
-                        _buildCategoryChip('Contraception'),
-                        _buildCategoryChip('Pregnancy'),
+                        _buildCategoryChip('Sexual Health', 0),
+                        _buildCategoryChip('Menstrual Health', 1),
+                        _buildCategoryChip('Contraception', 2),
+                        _buildCategoryChip('Pregnancy', 3),
                       ],
                     ),
                   ),
@@ -133,20 +132,30 @@ class _BlogPageState extends State<BlogPage> with SingleTickerProviderStateMixin
       ),
     );
   }
-}
 
-Widget _buildCategoryChip(String label) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 4.0),
-    child: Chip(
-      label: Text(label),
-      backgroundColor: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-        side: BorderSide(color: Colors.grey),
+  Widget _buildCategoryChip(String label, int index) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4.0),
+      child: ChoiceChip(
+        label: Text(label),
+        selected: _selectedChipIndex == index,
+        onSelected: (bool selected) {
+          setState(() {
+            _selectedChipIndex = selected ? index : _selectedChipIndex;
+          });
+        },
+        backgroundColor: Colors.white,
+        selectedColor: Colors.pinkAccent,
+        labelStyle: TextStyle(color: _selectedChipIndex == index ? Colors.white : Colors.black),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+          side: BorderSide(color: Colors.grey),
+        ),
+        // This removes the check icon
+        selectedShadowColor: Colors.transparent,
       ),
-    ),
-  );
+    );
+  }
 }
 
 Widget _buildTabContent() {
@@ -164,7 +173,7 @@ Widget _buildTabContent() {
               Row(
                 children: [
                   CircleAvatar(
-                    backgroundImage: NetworkImage('https://via.placeholder.com/150'),
+                    //backgroundImage: Image.asset("assets/images/Avatar.png"),
                   ),
                   SizedBox(width: 8.0),
                   Column(

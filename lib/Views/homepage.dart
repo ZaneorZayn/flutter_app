@@ -330,7 +330,7 @@ class HomePage extends StatelessWidget {
             ),
 
             Container(
-              height: 300, // Adjust height as needed
+              height: 320, // Adjust height as needed
               margin: EdgeInsets.all(10.0),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
