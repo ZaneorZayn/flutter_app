@@ -6,7 +6,7 @@ class ClinicPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightBlue,
-        elevation: 0,
+        elevation: 1,
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: CircleAvatar(
@@ -228,45 +228,89 @@ class ClinicPage extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-
-          _buildDoctorCard('Dr. Iker Bureau', 'Dental Sargon', 'assets/images/doctor2.png'),
-          _buildDoctorCard('Dr. Edward Cullen', 'Dental Sargon', 'assets/images/doctor2.png'),
+          _buildDoctorCard('Dr. Taylor Samaro', 'MBBS, BCS', '4.9', 5380, 4, 99, 'assets/images/doctor2.png', true),
+          _buildDoctorCard('Dr. Iker Bureau', 'MBBS, BCS', '4.9', 5380, 4, 99, 'assets/images/doctor2.png', true),
+          _buildDoctorCard('Dr. Iker Bureau', 'MBBS, BCS', '4.9', 5380, 4, 99, 'assets/images/doctor2.png', true),
         ],
       ),
     );
   }
 
-  Widget _buildDoctorCard(String name, String specialty, String imagePath) {
+  Widget _buildDoctorCard(String name, String specialty, String rating, int reviews, int experience, int price, String imagePath, bool isOnline) {
     return Card(
       margin: EdgeInsets.only(right: 16),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),
       child: Container(
-        width: 130,
+        width: 200,
         padding: EdgeInsets.all(8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.asset(imagePath, height: 100, width: 100, fit: BoxFit.cover),
+            Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(imagePath, height: 150, width: 200, fit: BoxFit.cover),
+                ),
+                if (isOnline)
+                  Positioned(
+                    top: 10,
+                    left: 10,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Text(
+                        'ONLINE',
+                        style: TextStyle(color: Colors.white, fontSize: 12),
+                      ),
+                    ),
+                  ),
+              ],
             ),
             SizedBox(height: 10),
             Text(
               name,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 12,
+                fontSize: 16,
               ),
             ),
             SizedBox(height: 5),
             Text(
               specialty,
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 14,
                 color: Colors.grey,
               ),
+            ),
+            SizedBox(height: 5),
+            Row(
+              children: [
+                Icon(Icons.star, color: Colors.amber, size: 16),
+                SizedBox(width: 5),
+                Text('$rating ($reviews)', style: TextStyle(fontSize: 14)),
+                 SizedBox(width: 12),
+                Text('$experience+ Years', style: TextStyle(fontSize: 14)),
+              ],
+            ),
+           
+            SizedBox(height: 5),
+            Text('\$$price Inc. VAT', style: TextStyle(fontSize: 14)),
+            SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                //primary: Colors.lightBlue,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              child: Text('SEE DOCTOR NOW'),
             ),
           ],
         ),

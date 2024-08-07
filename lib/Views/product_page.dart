@@ -139,7 +139,7 @@ class _ProductPageState extends State<ProductPage> {
                 borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
                 child: Image.asset(
                   'assets/images/dotted.png',
-                  height: 135,
+                  height: 120,
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
