@@ -33,25 +33,50 @@ class CustomDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.person),
-            title: const Text("Profile"),
+            title: const Text("Our purpose"),
             onTap: () {
               // Handle Profile tap
             },
           ),
           ListTile(
             leading: const Icon(Icons.settings),
-            title: const Text("Settings"),
+            title: const Text("Contact Us"),
             onTap: () {
               // Handle Settings tap
             },
           ),
           ListTile(
             leading: const Icon(Icons.logout),
-            title: const Text("Logout"),
+            title: const Text("Chat"),
             onTap: () {
               // Handle Logout tap
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.logout),
+            title: const Text("Notification"),
+            onTap: () {
+              // Handle Logout tap
+            },
+          ),
+
+          ListTile(
+            leading: const Icon(Icons.logout),
+            title: const Text("Bookmark"),
+            onTap: () {
+              // Handle Logout tap
+            },
+          ),
+
+          ListTile(
+            leading: const Icon(Icons.logout),
+            title: const Text("Profile"),
+            onTap: () {
+              // Handle Logout tap
+            },
+          ),
+
+
         ],
       ),
     );

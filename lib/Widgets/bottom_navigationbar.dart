@@ -16,6 +16,14 @@ class Bottomnavigationbar extends StatelessWidget {
         return Container(
           decoration: BoxDecoration(
             color:Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                spreadRadius: 1,
+                blurRadius: 5,
+                offset: Offset(0, -2), // changes position of shadow
+              ),
+            ],
             borderRadius: BorderRadius.only(topLeft: Radius.circular(35),topRight: Radius.circular(35)),
           ),
           child: Padding(

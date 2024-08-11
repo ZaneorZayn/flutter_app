@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
+  final Widget title;
   final List<Widget>? actions;
   final Color backgroundColor; // Make backgroundColor required
 
@@ -18,14 +18,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
         backgroundColor: backgroundColor, // Use the background color parameter
-        title: Text(title, style: TextStyle(color: Colors.white),),
+        title: title,
         actions: actions,
         elevation: 1.0, // Customize as needed
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(25.0),
-          ),
-        ),
+
       );
 
   }

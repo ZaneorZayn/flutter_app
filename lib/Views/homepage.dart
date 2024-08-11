@@ -18,22 +18,38 @@ class HomePage extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70),
         child: CustomAppBar(
-          title:"Home",
+          title:Row(
+            children: [
+              SizedBox(
+                height: 35,
+                child: Image.asset(
+                  "assets/images/Vector.png",
+                  fit: BoxFit.contain,
+                ),
+              )
+
+            ],
+          ),
           actions: [
-            IconButton(
-                onPressed: (){
-
-                },
-                icon: Icon(Icons.chat),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(40),
+                color: Colors.white,
+              ),
+              margin: EdgeInsets.all(5),
+              child: IconButton(icon: Icon(Icons.notifications), onPressed: () {}),
             ),
-            IconButton(
-              onPressed: (){
-
-              },
-              icon: Icon(Icons.call),
+            SizedBox(width: 5),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(40),
+                color: Colors.white,
+              ),
+              margin: EdgeInsets.all(5),
+              child: IconButton(icon: Icon(Icons.chat), onPressed: () {}),
             ),
           ],
-          backgroundColor: Colors.pinkAccent,
+          backgroundColor: Color(0xffF49EC4),
 
         ),
       ),
@@ -108,54 +124,52 @@ class HomePage extends StatelessWidget {
                         textColor: Colors.black,
                         icon: Icons.check,
                         height: double.infinity, // Adjusted height
+                        isRow: true,),
+                                ),
+                    Expanded(
+                        child: _buildGridButton(
+                        color: Colors.lightBlue[100]!,
+                        text: 'Clinic',
+                        textColor: Colors.blue[900]!,
+                        icon: Icons.local_hospital,
+                        height: double.infinity, // Adjusted height
                         isRow: true,
-                                ),
-                                ),
-    Expanded(
-    child: _buildGridButton(
-    color: Colors.lightBlue[100]!,
-    text: 'Clinic',
-    textColor: Colors.blue[900]!,
-    icon: Icons.local_hospital,
-    height: double.infinity, // Adjusted height
-    isRow: true,
-    ),
-    ),
-    ],
-    ),
-    ),
-    Expanded(
-    child: Row(
-    children: [
-    Expanded(
-    child: _buildGridButton(
-    color: Colors.deepPurple[900]!,
-    text: 'Join the movement ',
-    textColor: Colors.pink[100]!,
-    height: double.infinity, // Adjusted height
-    isRow: true,
-    ),
-    ),
-    Expanded(
-    child: _buildGridButton(
-      color: Colors.teal[900]!,
-      text: 'Hot Line',
-      textColor: Colors.pink[100]!,
-      icon: Icons.phone,
-      height: double.infinity, // Adjusted height
-      isRow: true,
-    ),
-    ),
-    ],
-    ),
-    ),
-    ],
-    ),
-    ),
-    ],
-    ),
-    ),
-    ),
+                        ),
+                        ),
+                        ],
+                        ),
+                        ),
+                        Expanded(
+                        child: Row(
+                        children: [
+                        Expanded(
+                        child: _buildGridButton(
+                        color: Colors.deepPurple[900]!,
+                        text: 'Join the movement ',
+                        textColor: Colors.pink[100]!,
+                        height: double.infinity, // Adjusted height
+                        isRow: true,
+                        ),
+                        ),
+                        Expanded(
+                        child: _buildGridButton(
+                          color: Colors.teal[900]!,
+                          text: 'Hot Line',
+                          textColor: Colors.pink[100]!,
+                          icon: Icons.phone,
+                          height: double.infinity, // Adjusted height
+                          isRow: true,
+                        ),),
+                        ],),),
+
+                  ],
+                        ),
+
+                        ),
+              ],
+                        ),
+                        ),
+                        ),
             Container(
               padding: EdgeInsets.all(10.0),
               margin: EdgeInsets.all(5.0),
@@ -276,7 +290,7 @@ class HomePage extends StatelessWidget {
                               ),
                               child: Image.asset(
                                 "assets/images/Blog.png",
-                                height: 154, // Adjust image height
+                                height: 140, // Adjust image height
                                 width: double.infinity,
                                 fit: BoxFit.cover,
                               ),
@@ -305,6 +319,7 @@ class HomePage extends StatelessWidget {
                                     overflow: TextOverflow.ellipsis
                                   ),
                                   textAlign: TextAlign.center,
+                                  maxLines: 2,
                                 ),
                               ),
                             ),
@@ -319,7 +334,7 @@ class HomePage extends StatelessWidget {
             ),
 
             Padding(
-              padding: const EdgeInsets.all(6.0),
+              padding: const EdgeInsets.all(16.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

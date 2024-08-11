@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile_app/Widgets/product_card.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   @override
@@ -7,146 +7,157 @@ class ProductDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Product Detail'),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(1.0),
+          child: Divider(
+            height: 5,
+            color: Colors.grey[400],
+          ),
         ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.favorite_border),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(Icons.more_vert),
-            onPressed: () {},
-          ),
-        ],
+
       ),
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                Image.asset("assets/images/dotted.png"),
-                SizedBox(height: 20),
-                Text(
-                  'Number One Dotted Love - Condom',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  '\$1.13',
-                  style: TextStyle(fontSize: 24, color: Colors.red),
-                ),
-                SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.star, color: Colors.amber),
-                    Icon(Icons.star, color: Colors.amber),
-                    Icon(Icons.star, color: Colors.amber),
-                    Icon(Icons.star, color: Colors.amber),
-                    Icon(Icons.star_half, color: Colors.amber),
-                    SizedBox(width: 10),
-                    Text('4.6 (98 Reviews)'),
-                  ],
-                ),
-                SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    'PSK\'s mission is to improve the health of low-income and vulnerable Cambodians through social marketing in collaboration with the Royal Government of Cambodia.\n\nOur job was to create a new communication strategy that included rebranding and new packaging for a product.',
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                SizedBox(height: 50), // Add some space at the bottom
-                Container(
-                  height: 200,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 10, // Change this to the number of items you have
-                    itemBuilder: (context, index) {
-                      return ProductCard();
-                    },
-                  ),
-                ),
-              ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            // Product Image
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset(
+                'assets/images/dotted.png', // Replace with actual image URL
+                height: 200,
+              ),
             ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              color: Colors.blue[200], // Background color for the button bar
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+            // Product Name and Price
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Text('Buy Now | \$1.13'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Row(
-                      children: [
-                        Icon(Icons.add_shopping_cart),
-                        SizedBox(width: 5,),
-                        Text('Add to cart'),
-                      ],
+                  Text(
+                    'NUMBER ONE DOTTED LOVE - CONDOM',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
                     ),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    '\$1.13',
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.red,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  // Rating and Reviews
+                  Row(
+                    children: [
+                      Icon(Icons.star, color: Colors.yellow, size: 20),
+                      Icon(Icons.star, color: Colors.yellow, size: 20),
+                      Icon(Icons.star, color: Colors.yellow, size: 20),
+                      Icon(Icons.star, color: Colors.yellow, size: 20),
+                      Icon(Icons.star_half, color: Colors.yellow, size: 20),
+                      SizedBox(width: 8),
+                      Text(
+                        '4.6 (98 Reviews)',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 16),
+                  // Product Description
+                  Text(
+                    "PSK's mission is to improve the health of low-income and vulnerable Cambodians through social marketing in collaboration with the Royal Government of Cambodia.",
+                    style: TextStyle(fontSize: 16),
                   ),
                 ],
               ),
             ),
-          ),
-        ],
+            SizedBox(height: 16),
+            // Related Products
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Text(
+                'Related Products',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+            SizedBox(height: 8),
+            Container(
+              height: 310, // Height of related products section
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  // Replace these containers with actual product cards
+                  ProductCard(
+                    imageUrl: "assets/images/dotted.png",
+                    title: 'Another Product',
+                    price: 1.13,
+                    rating: 4.9,
+                    reviewCount: 1010,
+                      ),
+                  ProductCard(
+                    imageUrl: "assets/images/dotted.png",
+                    title: 'Another Product',
+                    price: 1.13,
+                    rating: 4.9,
+                    reviewCount: 1010,
+                  ),
+                  ProductCard(
+                    imageUrl: "assets/images/dotted.png",
+                    title: 'Another Product',
+                    price: 1.13,
+                    rating: 4.9,
+                    reviewCount: 1010,
+                  ),
+                  ProductCard(
+                    imageUrl: "assets/images/dotted.png",
+                    title: 'Another Product',
+                    price: 1.13,
+                    rating: 4.9,
+                    reviewCount: 1010,
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 100), // Extra space for bottom buttons
+          ],
+        ),
       ),
-    );
-  }
-}
-
-class ProductCard extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 160,
-      margin: EdgeInsets.symmetric(horizontal: 10),
-      padding: EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: Offset(0, 3),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image.network(
-            'https://via.placeholder.com/150', // Placeholder image URL
-            height: 100,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
-          SizedBox(height: 10),
-          Text(
-            'Number One Dotted Love',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 5),
-          Text('\$1.13'),
-        ],
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [BoxShadow(blurRadius: 10, color: Colors.black26)],
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  // Add to cart action
+                },
+                icon: Icon(Icons.payment,color: Colors.white,),
+                label: Text('Buy Now | ${"1.13"}',style: TextStyle(color: Colors.white),),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor:Color(0xff002A4C),
+                ),
+              ),
+            ),
+            SizedBox(width: 16),
+            ElevatedButton.icon(
+              onPressed: () {
+                // Buy now action
+              },
+              icon: Icon(Icons.shopping_cart,color: Colors.white,),
+              label: Text('Add to cart',style: TextStyle(color: Colors.white),),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xff2DB1E5),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

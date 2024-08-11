@@ -144,13 +144,18 @@ class _ProductPageState extends State<ProductPage> {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
-                  child: Image.asset(
-                    'assets/images/dotted.png',
-                    height: 110,
-                    //width: MediaQuery.of(context).size.width * 0.5,
-                    fit: BoxFit.cover,
+                  child: Container(
+                    height: 120,
+                    width: double.infinity, // Make the image take the full width of the card
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/dotted.png'),
+                        fit: BoxFit.contain, // Ensure the image covers the entire area
+                      ),
+                    ),
                   ),
-                ),
+                  ),
+
                 Positioned(
                   top: 10,
                   left: 10,
