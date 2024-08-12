@@ -21,6 +21,9 @@ class ProductItem extends StatelessWidget {
             height: 100,
             width: double.infinity,
           ),
+          Divider(
+            height: 1.5,
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(

@@ -1,319 +1,432 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class ClinicPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.lightBlue,
-        elevation: 1,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: CircleAvatar(
-            backgroundImage: AssetImage('assets/images/profile.jpg'), // Replace with your image
-          ),
-        ),
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Welcome Back,',
-              style: TextStyle(color: Colors.white, fontSize: 16),
-            ),
-            Text(
-              'Sophia Rose',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.notifications, color: Colors.white),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(Icons.chat_bubble_outline, color: Colors.white),
-            onPressed: () {},
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.all(16),
-              color: Colors.lightBlue,
-              child: Column(
-                children: [
-                  TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Find your suitable doctor!',
-                      prefixIcon: Icon(Icons.search),
-                      suffixIcon: Icon(Icons.filter_list),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
-                        borderSide: BorderSide.none,
-                      ),
-                      filled: true,
-                      fillColor: Colors.white,
-                    ),
-                  ),
-                  SizedBox(height: 20),
-
-                ],
-              ),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Container(
-                padding: EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.purple,
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      backgroundColor: Color(0xFFF0F4FF),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(140),  // Adjust the height to accommodate both the AppBar and SearchBar
+        child: AppBar(
+          backgroundColor: Color(0xFF00A6FF),
+          elevation: 0,
+          flexibleSpace: Padding(
+            padding: const EdgeInsets.only(top: 40, left: 16, right: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Find the Right',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                          ),
-                        ),
-                        Text(
-                          'Doctor for you',
-                          style: TextStyle(
-                            color: Colors.yellow,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          'Needs!',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          'Book Now and Get 30% OFF',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            //primary: Colors.pink,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                          child: Text('BOOK NOW'),
-                        ),
-                      ],
+                    CircleAvatar(
+                      backgroundImage: AssetImage('assets/images/profile.png'),
                     ),
-                    Image.asset(
-                      'assets/images/Doctor.png', // Replace with your image
-                      height: 100,
+                    SizedBox(width: 8),
+                    Text(
+                      "Welcome Back.\nSophia Rose",
+                      style: TextStyle(fontSize: 16, color: Colors.white),
+                    ),
+                    Spacer(),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(40),
+                        color: Colors.white,
+                      ),
+                      margin: EdgeInsets.all(5),
+                      child: IconButton(
+                          icon: Image.asset("assets/icons/notification.png"),
+                          onPressed: () {}),
+                    ),
+                    SizedBox(width: 5),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(40),
+                        color: Colors.white,
+                      ),
+                      margin: EdgeInsets.all(5),
+                      child: IconButton(
+                          icon:Image.asset("assets/icons/chat.png",width: 40,height: 40,),
+                          onPressed: () {}),
                     ),
                   ],
                 ),
-              ),
+                SizedBox(height: 16),
+                // Search Bar inside the AppBar
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: "Find your suitable doctor!",
+                      border: InputBorder.none,
+                      icon: Image.asset("assets/icons/search.png"),
+                      suffixIcon: Image.asset("assets/icons/sort.png"),
+                    ),
+                  ),
+                ),
+              ],
             ),
-
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      _buildCategoryIcon(Icons.person, 'Doctor'),
-                      _buildCategoryIcon(Icons.calendar_today, 'Appointment'),
-                      _buildCategoryIcon(Icons.receipt, 'Prescription'),
-                      _buildCategoryIcon(Icons.local_pharmacy, 'Medicine'),
-                    ],
-                  ),
-                  SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Top Doctors',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        'View All',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.blue,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10),
-                  _buildDoctorList(),
-                  SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Available Doctor',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        'View All',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.blue,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10),
-                  _buildDoctorList(),
-                ],
-              ),
-            ),
-          ],
+          ),
         ),
       ),
-
-    );
-  }
-
-  Widget _buildCategoryIcon(IconData icon, String label) {
-    return Column(
-      children: [
-        Container(
-          padding: EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(color: Colors.grey),
-            borderRadius: BorderRadius.circular(10),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 20),
+              // Carousel Slider Section
+              CarouselSlider(
+                options: CarouselOptions(
+                  height: 200,
+                  autoPlay: true,
+                  autoPlayInterval: Duration(seconds: 3),
+                  enlargeCenterPage: true,
+                  viewportFraction: 1.0,  // Full width
+                ),
+                items: [
+                  buildCarouselItem(context, "assets/images/slidedoc1.png", screenWidth),
+                  buildCarouselItem(context, "assets/images/slidedoc2.png", screenWidth),
+                  buildCarouselItem(context, "assets/images/slidedoc3.png", screenWidth),
+                ],
+              ),
+              SizedBox(height: 20),
+              // Top Doctors Section
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Top Doctors",
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text("View All"),
+                  ),
+                ],
+              ),
+              SizedBox(height: 10),
+              // Top Doctors List
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      DoctorCard(
+                        name: "Dr. Taylor Samaro",
+                        specialization: "Dental Sargon",
+                        imageUrl: "assets/images/doctor2.png",
+                      ),
+                      DoctorCard(
+                        name: "Dr. Iker Bureau",
+                        specialization: "Dental Sargon",
+                        imageUrl: "assets/images/doctor2.png",
+                      ),
+                      DoctorCard(
+                        name: "Dr. Edson Doe",
+                        specialization: "Dental Sargon",
+                        imageUrl: "assets/images/doctor2.png",
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              // Available Doctor Section
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Available Doctors",
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text("View All"),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: GridView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 14,
+                    mainAxisSpacing: 12,
+                    childAspectRatio: 0.70,  // Reduce the child aspect ratio to fix overflow
+                  ),
+                  itemCount: 4, // For demonstration, use any number of items
+                  itemBuilder: (context, index) {
+                    return DoctorOnline(
+                      name: "Dr. Edwin Carli",
+                      specialization: "MBBS, BCS",
+                      imageUrl: "assets/images/doctor2.png",
+                    );
+                  },
+                ),
+              ),
+              SizedBox(height: 10),  // Add some space at the bottom
+            ],
           ),
-          child: Icon(icon, color: Colors.blue, size: 30),
         ),
-        SizedBox(height: 10),
-        Text(
-          label,
-          style: TextStyle(fontSize: 14, color: Colors.black),
-        ),
-      ],
+      ),
     );
   }
 
-  Widget _buildDoctorList() {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
+  Widget buildCarouselItem(BuildContext context, String imageUrl, double width) {
+    return Container(
+      width: width,  // Full width of the screen
+      margin: EdgeInsets.symmetric(horizontal: 8.0),
+      padding: EdgeInsets.all(16.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        image: DecorationImage(
+          image: AssetImage(imageUrl),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Stack(
         children: [
-          _buildDoctorCard('Dr. Taylor Samaro', 'MBBS, BCS', '4.9', 5380, 4, 99, 'assets/images/doctor2.png', true),
-          _buildDoctorCard('Dr. Iker Bureau', 'MBBS, BCS', '4.9', 5380, 4, 99, 'assets/images/doctor2.png', true),
-          _buildDoctorCard('Dr. Iker Bureau', 'MBBS, BCS', '4.9', 5380, 4, 99, 'assets/images/doctor2.png', true),
+          Positioned(
+            top: 110,
+            right: 5,
+            child: ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xff3A00E5),
+              ),
+              child: Text("BOOK NOW", style: TextStyle(color: Colors.white)),
+            ),
+          ),
         ],
       ),
     );
   }
+}
 
-  Widget _buildDoctorCard(String name, String specialty, String rating, int reviews, int experience, int price, String imagePath, bool isOnline) {
-    return Card(
+class DoctorCard extends StatelessWidget {
+  final String name;
+  final String specialization;
+  final String imageUrl;
+
+  const DoctorCard({
+    Key? key,
+    required this.name,
+    required this.specialization,
+    required this.imageUrl,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 150,
       margin: EdgeInsets.only(right: 16),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),  // Apply rounded corners to the entire card
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 4,
+            offset: Offset(2, 2),
+          ),
+        ],
       ),
-      child: Container(
-        width: 200,
-        padding: EdgeInsets.all(8),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Stack(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.asset(imagePath, height: 150, width: 200, fit: BoxFit.cover),
-                ),
-                if (isOnline)
-                  Positioned(
-                    top: 10,
-                    left: 10,
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                      decoration: BoxDecoration(
-                        color: Colors.green,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text(
-                        'ONLINE',
-                        style: TextStyle(color: Colors.white, fontSize: 12),
-                      ),
-                    ),
-                  ),
-              ],
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),  // Rounded corners for the image
+            child: Image.asset(
+              imageUrl,
+              width: double.infinity,
+              height: 100,
+              fit: BoxFit.cover,  // Image fits the container while maintaining aspect ratio
             ),
-            SizedBox(height: 10),
-            Text(
+          ),
+          SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(
               name,
+              textAlign: TextAlign.center,
               style: TextStyle(
-                fontWeight: FontWeight.bold,
                 fontSize: 16,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 5),
-            Text(
-              specialty,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(
+              specialization,
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.grey),
+            ),
+          ),
+          SizedBox(height: 10),
+        ],
+      ),
+    );
+  }
+}
+
+class DoctorOnline extends StatelessWidget {
+  final String name;
+  final String specialization;
+  final String imageUrl;
+
+  const DoctorOnline({
+    Key? key,
+    required this.name,
+    required this.specialization,
+    required this.imageUrl,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 200,
+      margin: EdgeInsets.only(right: 16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 4,
+            offset: Offset(2, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Online Badge
+          Stack(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                child: Image.asset(
+                  imageUrl,
+                  width: double.infinity,
+                  height: 110,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Positioned(
+                top: 8,
+                left: 8,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: Color(0xFF00C853), // Green color for "ONLINE"
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Text(
+                    "ONLINE",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 12),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(
+              name,
               style: TextStyle(
                 fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(
+              specialization,
+              style: TextStyle(
+                fontSize: 12,
                 color: Colors.grey,
               ),
             ),
-            SizedBox(height: 5),
-            Row(
+          ),
+          SizedBox(height: 5),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Row(
               children: [
-                Icon(Icons.star, color: Colors.amber, size: 16),
-                SizedBox(width: 5),
-                Text('$rating ($reviews)', style: TextStyle(fontSize: 14)),
-                 SizedBox(width: 12),
-                Text('$experience+ Years', style: TextStyle(fontSize: 14)),
+                Icon(Icons.star, color: Colors.amber, size: 14),
+                SizedBox(width: 4),
+                Text(
+                  "4.9 (5,380)",
+                  style: TextStyle(fontSize: 12, color: Colors.black),
+                ),
+                SizedBox(width: 4),
+                Icon(Icons.camera, color: Colors.blue, size: 14),
+                SizedBox(width: 4),
+                Text(
+                  "4+ Years",
+                  style: TextStyle(fontSize: 12, color: Colors.black),
+                ),
               ],
             ),
-           
-            SizedBox(height: 5),
-            Text('\$$price Inc. VAT', style: TextStyle(fontSize: 14)),
-            SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                //primary: Colors.lightBlue,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
+          ),
+          SizedBox(height: 5),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "\$99 Inc.VAT",
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              child: Text('SEE DOCTOR NOW'),
+                Icon(Icons.video_call, color: Colors.blue, size: 20),
+              ],
             ),
-          ],
-        ),
+          ),
+          SizedBox(height: 11),
+          Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: Color(0xFF00A6FF), // Button background color
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20)),
+            ),
+            child: TextButton(
+              onPressed: () {},
+              child: Text(
+                "SEE DOCTOR NOW",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -19,10 +19,10 @@ class CustomDrawer extends StatelessWidget {
               ),
             ),
             currentAccountPicture: ClipOval(
-              child: Image.asset('assets/images/Mengchan.jpg',fit: BoxFit.cover),
+              child: Image.asset('assets/images/profile.png',fit: BoxFit.cover),
             ),
-            accountName: const Text("Chan"),
-            accountEmail: const Text("mengchan400@gmail.com"),
+            accountName: const Text("Rose"),
+            accountEmail: const Text("Rose112@gmail.com"),
           ),
           ListTile(
             leading: Image.asset('assets/icons/home.png',width: 24, height: 24,),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mobile_app/Widgets/product_card.dart';
 
 class ProductDetailScreen extends StatelessWidget {
@@ -14,7 +15,6 @@ class ProductDetailScreen extends StatelessWidget {
             color: Colors.grey[400],
           ),
         ),
-
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -52,6 +52,7 @@ class ProductDetailScreen extends StatelessWidget {
                   SizedBox(height: 8),
                   // Rating and Reviews
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Icon(Icons.star, color: Colors.yellow, size: 20),
                       Icon(Icons.star, color: Colors.yellow, size: 20),
@@ -59,14 +60,27 @@ class ProductDetailScreen extends StatelessWidget {
                       Icon(Icons.star, color: Colors.yellow, size: 20),
                       Icon(Icons.star_half, color: Colors.yellow, size: 20),
                       SizedBox(width: 8),
+                      IconButton(
+                        onPressed: () {},
+                        icon: FaIcon(FontAwesomeIcons.minusSquare),
+                      ),
                       Text(
-                        '4.6 (98 Reviews)',
-                        style: TextStyle(fontSize: 16),
+                        "2",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: FaIcon(FontAwesomeIcons.plusSquare),
                       ),
                     ],
                   ),
                   SizedBox(height: 16),
                   // Product Description
+                  Text(
+                    '4.6 (98 Reviews)',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  SizedBox(height: 10),
                   Text(
                     "PSK's mission is to improve the health of low-income and vulnerable Cambodians through social marketing in collaboration with the Royal Government of Cambodia.",
                     style: TextStyle(fontSize: 16),
@@ -96,23 +110,23 @@ class ProductDetailScreen extends StatelessWidget {
                     price: 1.13,
                     rating: 4.9,
                     reviewCount: 1010,
-                      ),
+                  ),
                   ProductCard(
-                    imageUrl: "assets/images/dotted.png",
+                    imageUrl: "assets/images/banana.png",
                     title: 'Another Product',
                     price: 1.13,
                     rating: 4.9,
                     reviewCount: 1010,
                   ),
                   ProductCard(
-                    imageUrl: "assets/images/dotted.png",
+                    imageUrl: "assets/images/berry.png",
                     title: 'Another Product',
                     price: 1.13,
                     rating: 4.9,
                     reviewCount: 1010,
                   ),
                   ProductCard(
-                    imageUrl: "assets/images/dotted.png",
+                    imageUrl: "assets/images/classic.png",
                     title: 'Another Product',
                     price: 1.13,
                     rating: 4.9,
@@ -134,26 +148,33 @@ class ProductDetailScreen extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
+              child: ElevatedButton(
+                onPressed: () {
+                  // Buy now action
+                },
+                child: Text(
+                  "Buy Now | ",
+                  style: TextStyle(color: Colors.white),
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue[600], // Set your desired color
+                ),
+              ),
+            ),
+            SizedBox(width: 10), // Add spacing between the buttons
+            Expanded(
               child: ElevatedButton.icon(
                 onPressed: () {
                   // Add to cart action
                 },
-                icon: Icon(Icons.payment,color: Colors.white,),
-                label: Text('Buy Now | ${"1.13"}',style: TextStyle(color: Colors.white),),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor:Color(0xff002A4C),
+                icon: Icon(Icons.shopping_cart, color: Colors.white),
+                label: Text(
+                  'Add to cart',
+                  style: TextStyle(color: Colors.white),
                 ),
-              ),
-            ),
-            SizedBox(width: 16),
-            ElevatedButton.icon(
-              onPressed: () {
-                // Buy now action
-              },
-              icon: Icon(Icons.shopping_cart,color: Colors.white,),
-              label: Text('Add to cart',style: TextStyle(color: Colors.white),),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xff2DB1E5),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xff2DB1E5),
+                ),
               ),
             ),
           ],

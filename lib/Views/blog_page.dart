@@ -34,7 +34,9 @@ class _BlogPageState extends State<BlogPage> with SingleTickerProviderStateMixin
             color: Colors.white,
           ),
           margin: EdgeInsets.all(7),
-          child: IconButton(icon: Icon(Icons.arrow_back), onPressed: () {}),
+          child: IconButton(
+              icon: Image.asset("assets/icons/arrow_back.png"),
+              onPressed: () {}),
         ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,7 +77,9 @@ class _BlogPageState extends State<BlogPage> with SingleTickerProviderStateMixin
               color: Colors.white,
             ),
             margin: EdgeInsets.all(5),
-            child: IconButton(icon: Icon(Icons.search), onPressed: () {}),
+            child: IconButton(
+                icon: Image.asset("assets/icons/search.png"),
+                onPressed: () {}),
           ),
           SizedBox(width: 5),
           Container(
@@ -84,7 +88,9 @@ class _BlogPageState extends State<BlogPage> with SingleTickerProviderStateMixin
               color: Colors.white,
             ),
             margin: EdgeInsets.all(5),
-            child: IconButton(icon: Icon(Icons.bookmark_border), onPressed: () {}),
+            child: IconButton(
+                icon: Image.asset("assets/icons/bookmark.png"),
+                onPressed: () {}),
           ),
         ],
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app/Views/cart.dart';
 import 'package:mobile_app/Views/detail_product.dart';
 
 
@@ -40,13 +41,29 @@ class _ProductPageState extends State<ProductPage> {
           style: TextStyle(color: Colors.black),
         ),
         actions: [
-          IconButton(
-            icon: Icon(Icons.favorite_border, color: Colors.black),
-            onPressed: () {},
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Color(0xff64748B)),
+              borderRadius: BorderRadius.circular(40),
+              color: Colors.white,
+            ),
+            child: IconButton(
+                icon: Image.asset("assets/icons/favorite.png"),
+                onPressed: () {}),
           ),
-          IconButton(
-            icon: Icon(Icons.shopping_cart, color: Colors.black),
-            onPressed: () {},
+          SizedBox(width: 5),
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Color(0xff64748B)),
+              borderRadius: BorderRadius.circular(40),
+              color: Colors.white,
+            ),
+            margin: EdgeInsets.all(5),
+            child: IconButton(
+                icon: Image.asset("assets/icons/cart.png",),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => CartPage()));
+                }),
           ),
         ],
       ),
@@ -57,14 +74,16 @@ class _ProductPageState extends State<ProductPage> {
             TextField(
               decoration: InputDecoration(
                 hintText: 'Find your suitable product!',
-                prefixIcon: Icon(Icons.search),
-                suffixIcon: Icon(Icons.filter_list),
+                prefixIcon: Image.asset("assets/icons/search.png"),
+                suffixIcon: Image.asset("assets/icons/sort.png"),
                 border: OutlineInputBorder(
+
                   borderRadius: BorderRadius.circular(30),
-                  borderSide: BorderSide.none,
+                  borderSide: BorderSide(color: Color(0xff008FC0),
+                  width: 1.5),
                 ),
                 filled: true,
-                fillColor: Colors.grey[200],
+                fillColor: Color(0xffECFAFF),
               ),
             ),
             SizedBox(height: 10),
@@ -177,6 +196,7 @@ class _ProductPageState extends State<ProductPage> {
                 ),
               ],
             ),
+
             Padding(
               padding: const EdgeInsets.only(top: 22.0),
               child: Text(
