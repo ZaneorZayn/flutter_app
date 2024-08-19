@@ -116,7 +116,7 @@ class BlogDetailPage extends StatelessWidget {
                   ),
                   SizedBox(height: 8),
                   Container(
-                    height: 200,
+                    height: 160,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: List.generate(4, (index) {
@@ -146,7 +146,7 @@ class BlogDetailPage extends StatelessWidget {
                                       topRight: Radius.circular(12)),
                                   child: Image.asset(
                                     'assets/images/Blog.png',
-                                    height: 100,
+                                    height: 120,
                                     width: double.infinity,
                                     fit: BoxFit.cover,
                                   ),

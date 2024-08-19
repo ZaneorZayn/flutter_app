@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mobile_app/Views/blog_detail.dart';
 
 import 'package:mobile_app/Widgets/comment_container.dart';
@@ -33,26 +34,29 @@ class HomePage extends StatelessWidget {
             ],
           ),
           actions: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(40),
-                color: Colors.white,
-              ),
-              child: IconButton(
-                  icon: Image.asset("assets/icons/notification.png"),
+             IconButton(
+                 style: IconButton.styleFrom(
+                   backgroundColor: Colors.white,
+                   shape: RoundedRectangleBorder(
+                     borderRadius: BorderRadius.circular(20),
+                   )
+                 ),
+                  icon: SvgPicture.asset("assets/icons/notification.svg",height: 23,width: 23,color: Colors.grey[700],),
                   onPressed: () {}),
-            ),
+
+
             SizedBox(width: 5),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(40),
-                color: Colors.white,
-              ),
-              margin: EdgeInsets.all(5),
-              child: IconButton(
-                  icon: Image.asset("assets/icons/bookmark.png",),
-                  onPressed: () {}),
-            ),
+
+            IconButton(
+                style: IconButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    )
+                ),
+                icon: SvgPicture.asset("assets/icons/bookmark.svg",height: 20,width: 20,),
+                onPressed: () {}),
+
           ],
           backgroundColor: Color(0xffF49EC4),
 
@@ -73,8 +77,8 @@ class HomePage extends StatelessWidget {
                 ],),
             ),
            Container(
-              padding: EdgeInsets.all(10.0),
-              margin: EdgeInsets.all(5.0),
+              padding: EdgeInsets.all(12.0),
+              margin: EdgeInsets.all(10.0),
               width: 500,
               decoration: BoxDecoration(
               color: Color(0xffFFD8DF),

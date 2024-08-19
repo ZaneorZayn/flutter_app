@@ -24,10 +24,6 @@ class CustomAppBar extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(20.0),
-          bottomRight: Radius.circular(20.0),
-        ),
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.only(

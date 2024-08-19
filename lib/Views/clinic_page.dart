@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_svg/svg.dart';
 
 class ClinicPage extends StatelessWidget {
   @override
@@ -30,26 +31,26 @@ class ClinicPage extends StatelessWidget {
                       style: TextStyle(fontSize: 16, color: Colors.white),
                     ),
                     Spacer(),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(40),
-                        color: Colors.white,
+                    IconButton(
+                      style: IconButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)
+                          )
                       ),
-                      margin: EdgeInsets.all(5),
-                      child: IconButton(
-                          icon: Image.asset("assets/icons/notification.png"),
-                          onPressed: () {}),
+                      icon: SvgPicture.asset("assets/icons/notification.svg",width: 24,height: 24,color: Colors.grey[700],),
+                      onPressed: (){},
                     ),
                     SizedBox(width: 5),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(40),
-                        color: Colors.white,
+                    IconButton(
+                      style: IconButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)
+                          )
                       ),
-                      margin: EdgeInsets.all(5),
-                      child: IconButton(
-                          icon:Image.asset("assets/icons/chat.png",width: 40,height: 40,),
-                          onPressed: () {}),
+                      icon: SvgPicture.asset("assets/icons/chat.svg",width: 24,height: 24,color: Colors.grey[700],),
+                      onPressed: (){},
                     ),
                   ],
                 ),
@@ -65,8 +66,8 @@ class ClinicPage extends StatelessWidget {
                     decoration: InputDecoration(
                       hintText: "Find your suitable doctor!",
                       border: InputBorder.none,
-                      icon: Image.asset("assets/icons/search.png"),
-                      suffixIcon: Image.asset("assets/icons/sort.png"),
+                      icon: SvgPicture.asset("assets/icons/search.svg"),
+                      suffixIcon: SvgPicture.asset("assets/icons/filter.svg",color: Colors.blue[200],),
                     ),
                   ),
                 ),
@@ -201,21 +202,7 @@ class ClinicPage extends StatelessWidget {
           fit: BoxFit.cover,
         ),
       ),
-      child: Stack(
-        children: [
-          Positioned(
-            top: 110,
-            right: 5,
-            child: ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xff3A00E5),
-              ),
-              child: Text("BOOK NOW", style: TextStyle(color: Colors.white)),
-            ),
-          ),
-        ],
-      ),
+
     );
   }
 }
@@ -302,8 +289,8 @@ class DoctorOnline extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 200,
-      margin: EdgeInsets.only(right: 16),
+      width: 180,
+      margin: EdgeInsets.only(right: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
@@ -326,7 +313,7 @@ class DoctorOnline extends StatelessWidget {
                 child: Image.asset(
                   imageUrl,
                   width: double.infinity,
-                  height: 110,
+                  height: 100,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -350,7 +337,7 @@ class DoctorOnline extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 12),
+          SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Text(

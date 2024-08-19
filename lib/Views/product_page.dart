@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:mobile_app/Views/cart.dart';
 import 'package:mobile_app/Views/detail_product.dart';
 
@@ -32,38 +33,33 @@ class _ProductPageState extends State<ProductPage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.menu, color: Colors.black),
-          onPressed: () {},
-        ),
         title: Text(
           'Product',
           style: TextStyle(color: Colors.black),
         ),
         actions: [
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Color(0xff64748B)),
-              borderRadius: BorderRadius.circular(40),
-              color: Colors.white,
+          IconButton(
+            style: IconButton.styleFrom(
+                backgroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    side: BorderSide(color: Colors.black)
+                )
             ),
-            child: IconButton(
-                icon: Image.asset("assets/icons/favorite.png"),
-                onPressed: () {}),
+            icon: SvgPicture.asset("assets/icons/HeartFull.svg",color: Colors.blue,width: 25,height: 25,),
+            onPressed: (){},
           ),
           SizedBox(width: 5),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Color(0xff64748B)),
-              borderRadius: BorderRadius.circular(40),
-              color: Colors.white,
+          IconButton(
+            style: IconButton.styleFrom(
+                backgroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  side: BorderSide(color: Colors.black)
+                )
             ),
-            margin: EdgeInsets.all(5),
-            child: IconButton(
-                icon: Image.asset("assets/icons/cart.png",),
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => CartPage()));
-                }),
+            icon: SvgPicture.asset("assets/icons/cart.svg",color: Colors.blue,width: 25,height: 25,),
+            onPressed: (){},
           ),
         ],
       ),
@@ -74,8 +70,8 @@ class _ProductPageState extends State<ProductPage> {
             TextField(
               decoration: InputDecoration(
                 hintText: 'Find your suitable product!',
-                prefixIcon: Image.asset("assets/icons/search.png"),
-                suffixIcon: Image.asset("assets/icons/sort.png"),
+                prefixIcon: SvgPicture.asset("assets/icons/search.svg"),
+                suffixIcon: SvgPicture.asset("assets/icons/filter.svg"),
                 border: OutlineInputBorder(
 
                   borderRadius: BorderRadius.circular(30),
@@ -107,7 +103,7 @@ class _ProductPageState extends State<ProductPage> {
                   mainAxisSpacing: 10,
                   childAspectRatio: 0.7,
                 ),
-                itemCount: 4,
+                itemCount: 6,
                 itemBuilder: (context, index) {
                   return _buildProductCard();
                 },

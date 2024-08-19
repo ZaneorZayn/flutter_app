@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class BlogPage extends StatefulWidget {
   const BlogPage({super.key});
@@ -28,15 +29,15 @@ class _BlogPageState extends State<BlogPage> with SingleTickerProviderStateMixin
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        leading: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Colors.white,
+        leading: IconButton(
+          style: IconButton.styleFrom(
+            backgroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20)
+            )
           ),
-          margin: EdgeInsets.all(7),
-          child: IconButton(
-              icon: Image.asset("assets/icons/arrow_back.png"),
-              onPressed: () {}),
+          icon: SvgPicture.asset("assets/icons/arrow_back.svg",width: 25,height: 25,),
+          onPressed: (){},
         ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,26 +72,26 @@ class _BlogPageState extends State<BlogPage> with SingleTickerProviderStateMixin
           ),
         ),
         actions: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(40),
-              color: Colors.white,
+          IconButton(
+            style: IconButton.styleFrom(
+                backgroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)
+                )
             ),
-            margin: EdgeInsets.all(5),
-            child: IconButton(
-                icon: Image.asset("assets/icons/search.png"),
-                onPressed: () {}),
+            icon: SvgPicture.asset("assets/icons/search1.svg",width: 24,height: 24,color: Colors.grey[700],),
+            onPressed: (){},
           ),
           SizedBox(width: 5),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(40),
-              color: Colors.white,
+          IconButton(
+            style: IconButton.styleFrom(
+                backgroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)
+                )
             ),
-            margin: EdgeInsets.all(5),
-            child: IconButton(
-                icon: Image.asset("assets/icons/bookmark.png"),
-                onPressed: () {}),
+            icon: SvgPicture.asset("assets/icons/bookmark.svg",width: 20,height: 20,),
+            onPressed: (){},
           ),
         ],
       ),
